@@ -1,8 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { addFirestoreDocument } from "./infra/lib/firebase/firestore";
 
 function App() {
+  useEffect(() => {
+    addFirestoreDocument({ path: "/hello", docData: { text: "hello" } }).catch(
+      console.log
+    );
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
